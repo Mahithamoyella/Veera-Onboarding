@@ -1,0 +1,64 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: onboarding_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin834
+      POSTGRES_DB: employee_db
+    ports:
+      - "5473:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+
+  backend:
+    build:
+      context: ./Backend
+    container_name: onboarding_backend
+    depends_on:
+      - postgres
+    environment:
+      PORT: 3075
+    ports:
+      - "3075:3075"
+    volumes:
+      - ./Backend/Uploads:/app/Uploads
+    restart: always
+    # ❌ Healthcheck disabled for now (was causing startup issues)
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:3075/api/health"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 3
+
+  frontend:
+    build:
+      context: ./Frontend
+    container_name: onboarding_frontend
+    ports:
+      - "8101:80"
+    restart: always
+
+  hr:
+    build:
+      context: ./HR
+    container_name: onboarding_hr
+    ports:
+      - "8102:80"
+    restart: always
+
+  staff:
+    build:
+      context: ./Staff
+    container_name: onboarding_staff
+    ports:
+      - "8103:80"
+    restart: always
+
+volumes:
+  postgres_data:
+
