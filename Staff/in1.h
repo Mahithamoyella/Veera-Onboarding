@@ -655,9 +655,7 @@
                     modalBody.scrollTo({ top: 0, behavior: 'smooth' });
                 }, 100);
             } catch (error) {
-                // console.error('Error fetching employee details:', error);
-                document.getElementById('modalHeader').textContent = employee.full_name;
-
+                console.error('Error fetching employee details:', error);
                 alert(`Error loading employee details: ${error.message}`);
             }
         }
@@ -672,7 +670,7 @@
             document.getElementById('searchInput').addEventListener('input', async (e) => {
                 const searchTerm = e.target.value.toLowerCase();
                 try {
-                    const response = await fetch('http://54.209.116.102:3056/api/employees/active');
+                    const response = await fetch('http://54.209.116.102:3075/api/employees/active');
                     if (!response.ok) {
                         throw new Error(`HTTP ${response.status}: ${await response.text()}`);
                     }

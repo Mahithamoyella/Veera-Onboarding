@@ -23,7 +23,6 @@
           --border-radius: 12px;
           --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
           --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-          --section-gradient: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(72, 149, 239, 0.1));
         }
         
         * {
@@ -37,8 +36,6 @@
           line-height: 1.6;
           padding: 0;
           margin: 0;
-          background-color: #f5f7ff;
-          color: var(--dark);
         }
         
         /* Header Styles */
@@ -49,26 +46,12 @@
           text-align: center;
           margin-bottom: 2.5rem;
           box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
-          position: relative;
-          overflow: hidden;
-        }
-        
-        header::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd' opacity='0.1'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         
         header h1 {
           font-size: 2.5rem;
           margin-bottom: 0.75rem;
           font-weight: 700;
-          position: relative;
-          text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .header-quote {
@@ -78,7 +61,6 @@
           font-weight: 300;
           max-width: 600px;
           margin: 0 auto;
-          position: relative;
         }
         
         /* Main Form Container */
@@ -96,8 +78,8 @@
           margin-bottom: 2rem;
         }
         
-        /* Section Styling */
-        .form-section {
+        /* Fieldset Styling */
+        fieldset {
           border: none;
           background: white;
           border-radius: var(--border-radius);
@@ -107,33 +89,25 @@
           position: relative;
           overflow: hidden;
           height: 100%;
-          border-top: 4px solid var(--primary);
         }
         
-        .form-section:hover {
+        fieldset:hover {
           transform: translateY(-5px);
           box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
         }
         
-        .form-section::after {
+        fieldset::before {
           content: "";
           position: absolute;
           top: 0;
           left: 0;
-          width: 100%;
+          width: 4px;
           height: 100%;
-          background: var(--section-gradient);
-          opacity: 0;
-          transition: var(--transition);
-          z-index: 0;
+          background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
         
-        .form-section:hover::after {
-          opacity: 1;
-        }
-        
-        /* Section Header with Icons */
-        .section-header {
+        /* Legend with Icons */
+        legend {
           font-size: 1.3rem;
           font-weight: 600;
           color: var(--primary);
@@ -143,10 +117,9 @@
           align-items: center;
           width: 100%;
           position: relative;
-          z-index: 1;
         }
         
-        .section-header::before {
+        legend::before {
           font-family: "Font Awesome 6 Free";
           font-weight: 900;
           position: absolute;
@@ -155,19 +128,18 @@
           color: var(--primary);
         }
         
-        /* Icons for each section */
-        .form-section:nth-child(1) .section-header::before { content: "\f2bb"; } /* Personal Info */
-        .form-section:nth-child(2) .section-header::before { content: "\f3c5"; } /* Address */
-        .form-section:nth-child(3) .section-header::before { content: "\f19c"; } /* Banking */
-        .form-section:nth-child(4) .section-header::before { content: "\f19d"; } /* Education */
-        .form-section:nth-child(5) .section-header::before { content: "\f0e0"; } /* Emergency */
-        .form-section:nth-child(6) .section-header::before { content: "\f0f2"; } /* Job Details */
+        /* Icons for each fieldset */
+        fieldset:nth-child(1) legend::before { content: "\f2bb"; } /* Personal Info */
+        fieldset:nth-child(2) legend::before { content: "\f3c5"; } /* Address */
+        fieldset:nth-child(3) legend::before { content: "\f19c"; } /* Banking */
+        fieldset:nth-child(4) legend::before { content: "\f19d"; } /* Education */
+        fieldset:nth-child(5) legend::before { content: "\f0e0"; } /* Emergency */
+        fieldset:nth-child(6) legend::before { content: "\f0f2"; } /* Job Details */
         
         /* Form Group Styling */
         .form-group {
           margin-bottom: 1.5rem;
           position: relative;
-          z-index: 1;
         }
         
         .form-group label {
@@ -203,12 +175,11 @@
           padding: 1.5rem;
           text-align: center;
           transition: var(--transition);
-          background-color: rgba(72, 149, 239, 0.03);
         }
         
         .file-input-container:hover {
           border-color: var(--accent);
-          background-color: rgba(72, 149, 239, 0.08);
+          background-color: rgba(72, 149, 239, 0.05);
         }
         
         .file-input-container input[type="file"] {
@@ -305,8 +276,6 @@
           border-radius: var(--border-radius);
           cursor: pointer;
           transition: var(--transition);
-          position: relative;
-          overflow: hidden;
         }
         
         .btn[type="submit"] {
@@ -319,24 +288,6 @@
           background-color: var(--primary-dark);
           transform: translateY(-2px);
           box-shadow: 0 6px 16px rgba(67, 97, 238, 0.4);
-        }
-        
-        .btn[type="submit"]::after {
-          content: "";
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 5px;
-          height: 5px;
-          background: rgba(255, 255, 255, 0.5);
-          opacity: 0;
-          border-radius: 100%;
-          transform: scale(1, 1) translate(-50%, -50%);
-          transform-origin: 50% 50%;
-        }
-        
-        .btn[type="submit"]:focus:not(:active)::after {
-          animation: ripple 1s ease-out;
         }
         
         .btn-reset {
@@ -359,7 +310,7 @@
             grid-template-columns: 1fr;
           }
           
-          .form-section {
+          fieldset {
             height: auto;
           }
         }
@@ -387,19 +338,6 @@
           .btn {
             width: 100%;
           }
-          
-          .form-section {
-            padding: 1.5rem 1.2rem;
-          }
-          
-          .section-header {
-            font-size: 1.2rem;
-            padding-left: 2rem;
-          }
-          
-          .section-header::before {
-            font-size: 1.2rem;
-          }
         }
         
         /* Animations */
@@ -414,32 +352,17 @@
           }
         }
         
-        @keyframes ripple {
-          0% {
-            transform: scale(0, 0);
-            opacity: 1;
-          }
-          20% {
-            transform: scale(25, 25);
-            opacity: 1;
-          }
-          100% {
-            opacity: 0;
-            transform: scale(40, 40);
-          }
-        }
-        
-        .form-section {
+        fieldset {
           animation: fadeInUp 0.6s ease-out forwards;
           opacity: 0;
         }
         
-        .form-section:nth-child(1) { animation-delay: 0.1s; }
-        .form-section:nth-child(2) { animation-delay: 0.2s; }
-        .form-section:nth-child(3) { animation-delay: 0.3s; }
-        .form-section:nth-child(4) { animation-delay: 0.4s; }
-        .form-section:nth-child(5) { animation-delay: 0.5s; }
-        .form-section:nth-child(6) { animation-delay: 0.6s; }
+        fieldset:nth-child(1) { animation-delay: 0.1s; }
+        fieldset:nth-child(2) { animation-delay: 0.2s; }
+        fieldset:nth-child(3) { animation-delay: 0.3s; }
+        fieldset:nth-child(4) { animation-delay: 0.4s; }
+        fieldset:nth-child(5) { animation-delay: 0.5s; }
+        fieldset:nth-child(6) { animation-delay: 0.6s; }
         
         /* Loading State for Submit Button */
         .btn.loading {
@@ -499,77 +422,6 @@
           font-size: 1.1em;
           vertical-align: top;
         }
-        
-        /* Floating Labels Effect */
-        .form-group:focus-within label {
-          color: var(--primary);
-        }
-        
-        /* Modern Checkbox Styling */
-        input[type="checkbox"] {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          width: 20px;
-          height: 20px;
-          border: 2px solid #ddd;
-          border-radius: 4px;
-          outline: none;
-          cursor: pointer;
-          position: relative;
-          transition: var(--transition);
-        }
-        
-        input[type="checkbox"]:checked {
-          background-color: var(--primary);
-          border-color: var(--primary);
-        }
-        
-        input[type="checkbox"]:checked::after {
-          content: "\f00c";
-          font-family: "Font Awesome 6 Free";
-          font-weight: 900;
-          position: absolute;
-          color: white;
-          font-size: 12px;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        
-        /* Date Input Custom Styling */
-        input[type="date"]::-webkit-calendar-picker-indicator {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234361ee' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z'/%3E%3C/svg%3E");
-          cursor: pointer;
-          padding: 0;
-          margin: 0;
-        }
-        
-        /* File Upload Preview */
-        .file-preview {
-          display: none;
-          margin-top: 0.5rem;
-          font-size: 0.85rem;
-          color: var(--primary);
-        }
-        
-        /* Progress Bar */
-        .progress-container {
-          width: 100%;
-          height: 6px;
-          background-color: #e9ecef;
-          border-radius: 3px;
-          margin-top: 1rem;
-          overflow: hidden;
-          display: none;
-        }
-        
-        .progress-bar {
-          height: 100%;
-          background-color: var(--primary);
-          width: 0%;
-          transition: width 0.3s ease;
-        }
     </style>
 </head>
 <body>
@@ -581,8 +433,8 @@
     <div class="form-container">
         <form id="onboardingForm" enctype="multipart/form-data" novalidate>
             <div class="form-grid">
-                <section class="form-section">
-                    <h2 class="section-header">Personal Information</h2>
+                <fieldset>
+                    <legend>Personal Information</legend>
                     <div class="form-group">
                         <label for="fullName">Full Name</label>
                         <input type="text" id="fullName" name="fullName" class="form-control" required
@@ -612,9 +464,9 @@
                             onchange="validateDOB(this)" oninput="validateDOB(this)">
                         <span class="error-message" id="dob-error"></span>
                     </div>
-                </section>
-                <section class="form-section">
-                    <h2 class="section-header">Address</h2>
+                </fieldset>
+                <fieldset>
+                    <legend>Address</legend>
                     <div class="form-group">
                         <label for="streetAddress">Street Address</label>
                         <input type="text" id="streetAddress" name="streetAddress" class="form-control" required
@@ -644,9 +496,9 @@
                             oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                         <span class="error-message" id="zipCode-error"></span>
                     </div>
-                </section>
-                <section class="form-section">
-                    <h2 class="section-header">Banking Details</h2>
+                </fieldset>
+                <fieldset>
+                    <legend>Banking Details</legend>
                     <div class="form-group">
                         <label for="bankName">Bank Name</label>
                         <input type="text" id="bankName" name="bankName" class="form-control" required
@@ -684,7 +536,7 @@
                         <span class="error-message" id="ifscNumber-error"></span>
                     </div>
                     <div class="form-group">
-                        <h3 class="section-header">Experience</h3>
+                        <legend>Experience</legend>
                         <label for="prevCompanyName">Previous Company Name</label>
                         <input type="text" id="prevCompanyName" name="prevCompanyName" class="form-control"
                             pattern="^[A-Za-z\s]+$" title="Company name must contain only letters and spaces"
@@ -716,9 +568,9 @@
                         <span class="error-message" id="experienceLetter-error"></span>
                         <small>Allowed formats: PDF, JPG, PNG, DOC, DOCX (Max 5MB)</small>
                     </div>
-                </section>
-                <section class="form-section">
-                    <h2 class="section-header">Education Details</h2>
+                </fieldset>
+                <fieldset>
+                    <legend>Education Details</legend>
                     <div class="form-group">
                         <label for="sscInstitution">SSC Institution</label>
                         <input type="text" id="sscInstitution" name="sscInstitution" class="form-control" required
@@ -783,9 +635,9 @@
                         <span class="error-message" id="degreeCertificate-error"></span>
                         <small>Allowed formats: PDF, JPG, PNG, DOC, DOCX (Max 5MB)</small>
                     </div>
-                </section>
-                <section class="form-section">
-                    <h2 class="section-header">Emergency Contact Details</h2>
+                </fieldset>
+                <fieldset>
+                    <legend>Emergency Contact Details</legend>
                     <div class="form-group">
                         <label for="emergencyContactName">Contact Name</label>
                         <input type="text" id="emergencyContactName" name="emergencyContactName" class="form-control" required
@@ -817,9 +669,9 @@
                             oninput="enforceSingleSpace(this)" onblur="trimSpaces(this)">
                         <span class="error-message" id="emergencyContactAddress-error"></span>
                     </div>
-                </section>
-                <section class="form-section">
-                    <h2 class="section-header">Job Details</h2>
+                </fieldset>
+                <fieldset>
+                    <legend>Job Details</legend>
                     <div class="form-group">
                         <label for="jobRole">Job Role</label>
                         <input type="text" id="jobRole" name="jobRole" class="form-control" required
@@ -840,7 +692,7 @@
                             maxlength="100" minlength="2" oninput="enforceSingleSpace(this)" onblur="trimSpaces(this)">
                         <span class="error-message" id="department-error"></span>
                     </div>
-                </section>
+                </fieldset>
             </div>
             <div class="form-actions">
                 <div class="group" style="display: flex; flex-direction: row; gap: 50px;">
@@ -858,13 +710,6 @@
                         <span class="error-message" id="idProof-error"></span>
                         <small>Allowed formats: PDF, JPG, PNG (Max 5MB)</small>
                     </div>
-<div class="form-group">
-    <label for="resume">Upload Resume</label>
-    <input type="file" id="resume" name="resume" class="form-control form-control-file" required
-        accept=".pdf,.doc,.docx">
-    <span class="error-message" id="resume-error"></span>
-    <small>Allowed formats: PDF, DOC, DOCX (Max 5MB)</small>
-</div>
                 </div>
                 <div class="declaration-row">
                     <input type="checkbox" id="declaration" name="declaration" required>
@@ -1040,8 +885,7 @@ function validateFileInput(fileInput) {
     sscCertificate: ['application/pdf', 'image/jpeg', 'image/png', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
     interCertificate: ['application/pdf', 'image/jpeg', 'image/png', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
     degreeCertificate: ['application/pdf', 'image/jpeg', 'image/png', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
-    experienceLetter: ['application/pdf', 'image/jpeg', 'image/png', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
-    resume: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+    experienceLetter: ['application/pdf', 'image/jpeg', 'image/png', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
   };
   const maxSizeMB = fileInput.id === 'profilePic' ? 2 : 5;
   const maxSizeBytes = maxSizeMB * 1024 * 1024;
@@ -1072,7 +916,7 @@ document.addEventListener('DOMContentLoaded', function() {
   formControls.forEach(control => {
     control.addEventListener('input', function() {
       if (this.type === 'text' || this.type === 'email') {
-        enforceSingleSpace(this);
+        enforceSingleSpace(this); // Apply single space rule
       }
       validateField(this);
       if (this.id === 'accountNumber') {
@@ -1090,7 +934,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     control.addEventListener('blur', function() {
       if (this.type === 'text' || this.type === 'email') {
-        trimSpaces(this);
+        trimSpaces(this); // Trim only on blur to avoid typing issues
       }
       validateField(this);
     });
@@ -1108,7 +952,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  ['profilePic', 'idProof', 'sscCertificate', 'interCertificate', 'degreeCertificate', 'experienceLetter', 'resume'].forEach(id => {
+  ['profilePic', 'idProof', 'sscCertificate', 'interCertificate', 'degreeCertificate', 'experienceLetter'].forEach(id => {
     document.getElementById(id).addEventListener('change', function() {
       validateFileInput(this);
     });
@@ -1119,7 +963,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let isValid = true;
     const fieldsToValidate = form.querySelectorAll('input, select, textarea');
     fieldsToValidate.forEach(field => {
-      if (['profilePic', 'idProof', 'sscCertificate', 'interCertificate', 'degreeCertificate', 'experienceLetter', 'resume'].includes(field.id)) {
+      if (['profilePic', 'idProof', 'sscCertificate', 'interCertificate', 'degreeCertificate', 'experienceLetter'].includes(field.id)) {
         if (!validateFileInput(field)) isValid = false;
       } else if (!validateField(field)) {
         isValid = false;
@@ -1150,6 +994,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const formData = new FormData();
     const getDateValue = (value) => value && value.trim() !== '' ? value : null;
 
+    // Basic Information
     formData.append('fullName', form.fullName.value);
     formData.append('email', form.email.value);
     formData.append('phone', form.phone.value);
@@ -1161,6 +1006,8 @@ document.addEventListener('DOMContentLoaded', function() {
     formData.append('state', form.state.value);
     formData.append('zipCode', form.zipCode.value);
     formData.append('dob', getDateValue(form.dob.value));
+
+    // Education Details
     formData.append('sscInstitution', form.sscInstitution.value);
     formData.append('sscYear', form.sscYear.value);
     formData.append('interInstitution', form.interInstitution.value);
@@ -1168,26 +1015,32 @@ document.addEventListener('DOMContentLoaded', function() {
     formData.append('degree', form.degree.value);
     formData.append('institution', form.institution.value);
     formData.append('graduationYear', form.graduationYear.value);
+
+    // Bank Details
     formData.append('bankName', form.bankName.value);
     formData.append('mobileNumber', form.mobileNumber.value);
     formData.append('accountNumber', form.accountNumber.value);
     formData.append('ifscNumber', form.ifscNumber.value);
+
+    // Experience Details
     formData.append('prevCompanyName', form.prevCompanyName.value);
     formData.append('prevJobRole', form.prevJobRole.value);
     formData.append('prevEmploymentStart', getDateValue(form.prevEmploymentStart.value));
     formData.append('prevEmploymentEnd', getDateValue(form.prevEmploymentEnd.value));
+
+    // Emergency Contact Details
     formData.append('emergencyContactName', form.emergencyContactName.value);
     formData.append('emergencyContactRelationship', form.emergencyContactRelationship.value);
     formData.append('emergencyContactPhone', form.emergencyContactPhone.value);
     formData.append('emergencyContactAddress', form.emergencyContactAddress.value);
 
+    // File Uploads
     if (form.profilePic.files[0]) formData.append('profilePic', form.profilePic.files[0]);
     if (form.idProof.files[0]) formData.append('idProof', form.idProof.files[0]);
     if (form.sscCertificate.files[0]) formData.append('sscCertificate', form.sscCertificate.files[0]);
     if (form.interCertificate.files[0]) formData.append('interCertificate', form.interCertificate.files[0]);
     if (form.degreeCertificate.files[0]) formData.append('degreeCertificate', form.degreeCertificate.files[0]);
     if (form.experienceLetter.files[0]) formData.append('experienceLetter', form.experienceLetter.files[0]);
-    if (form.resume.files[0]) formData.append('resume', form.resume.files[0]);
 
     try {
       const response = await fetch('http://54.209.116.102:3075/api/employees', {
